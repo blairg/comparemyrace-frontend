@@ -1,10 +1,10 @@
 import React from 'react';
-import Todo from './Todo.jsx';
+import AthleteSearch from './athleteSearch/AthleteSearch.jsx';
 
-require('./App.scss');
+import './App.scss';
 
 export default class App extends React.Component {
     render() {
-        return <Todo />;
+        return <AthleteSearch />;
     }
 }

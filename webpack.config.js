@@ -27,7 +27,12 @@ module.exports = {
         {
             test: /\.scss$/,
             loaders: ['style','css','sass']
-        }]
+        },
+        {
+          test: /\.(ttf|eot|svg|woff|woff2)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+          loader: 'file-loader'
+        }
+      ]
     },
     resolve: {
         extensions: ['', '.js', '.jsx']
@@ -47,7 +52,7 @@ module.exports = {
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
         new HtmlwebpackPlugin({
-            title: 'React Redux App'
+            title: 'Compare My Race'
         })
     ]
 };

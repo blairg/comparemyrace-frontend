@@ -1,5 +1,5 @@
 {
-  "name": "react-redux-koa",
+  "name": "comparemyrace-frontend",
   "version": "0.0.1",
   "description": "Hacking around with node, koa, react and redux.",
   "main": "index.js",
@@ -14,7 +14,8 @@
     "dev": "node_modules/.bin/webpack-dev-server",
     "lint": "eslint . --ext .js --ext .jsx",
     "deploy": "NODE_ENV=production webpack -p",
-    "clean": "rm -rf app/dist app/build"
+    "clean": "rm -rf app/dist app/build",
+    "flow" : "flow; test $? -eq 0 -o $? -eq 2"
   },
   "repository": {
     "type": "git",
@@ -68,6 +69,7 @@
     "eslint": "^3.14.0",
     "eslint-loader": "^1.6.1",
     "eslint-plugin-react": "^6.9.0",
+    "flow-bin": "^0.40.0",
     "html-webpack-plugin": "^2.24.1",
     "jsdom": "^9.9.1",
     "mocha": "^3.2.0",
