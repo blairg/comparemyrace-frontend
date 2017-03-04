@@ -15,7 +15,7 @@
     "lint": "eslint . --ext .js --ext .jsx",
     "deploy": "NODE_ENV=production webpack -p",
     "clean": "rm -rf app/dist app/build",
-    "flow" : "flow; test $? -eq 0 -o $? -eq 2"
+    "flow": "flow; test $? -eq 0 -o $? -eq 2"
   },
   "repository": {
     "type": "git",
@@ -39,6 +39,7 @@
   "dependencies": {
     "bookshelf": "^0.10.0",
     "css-loader": "^0.26.1",
+    "empty": "^0.10.1",
     "immutable": "^3.8.1",
     "isomorphic-fetch": "^2.2.1",
     "knex": "^0.11.10",

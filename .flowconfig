@@ -2,3 +2,6 @@
 src
 api
 tests
+
+[options]
+module.name_mapper='.*\(.scss\)' -> 'empty/object'
