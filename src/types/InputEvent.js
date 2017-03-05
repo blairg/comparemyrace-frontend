@@ -1,5 +1,4 @@
-// @flow
-
+/* eslint-disable */
 declare type ElementEventTemplate<E> = {
   target: E
 } & Event;

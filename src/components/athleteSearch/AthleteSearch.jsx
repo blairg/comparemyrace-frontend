@@ -1,42 +1,57 @@
 // @flow
-
 import React from 'react';
 
-import type {InputEvent} from '../../types/InputEvent.js';
+import type InputEvent from '../../types/InputEvent';
 
 import './AthleteSearch.scss';
 
 type Props = {};
 
 export default class AthleteSearch extends React.Component {
-  props: Props;
-
-  state: {
-      athleteId: string;
-  };
-
-  handleChange: () => void;
-  handleSubmit: () => void;
-
   constructor(props: Props) {
     super(props);
-    this.state = {athleteId: ''};
+    this.state = { athleteId: '', name: '', profile: '' };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  state: {
+    athleteId: string,
+    name: string,
+    profile: string
+  }
+
+  props: Props;
+
+  handleChange: () => void;
+  handleSubmit: () => void;
+
   handleChange = (event: InputEvent) => {
-    this.setState({athleteId: event.target.value});
+    this.setState({ athleteId: event.target.value });
   };
 
   handleSubmit = (event: InputEvent) => {
     event.preventDefault();
-    //@todo: Fire off to a back end event.
-    console.log(this.state.athleteId);
+    // @todo: Fire off to a back end event.
+    // console.log(this.state.athleteId);
+
+    let name = '';
+    let profile = '';
+
+    if (this.state.athleteId === '973583') {
+      name = 'Blair Garrett';
+      profile = 'https://dgalywyr863hv.cloudfront.net/pictures/athletes/973583/632217/4/large.jpg';
+    } else {
+      name = 'Athlete not found!';
+    }
+
+    this.setState({ name, profile });
   };
 
   render = () => {
-    return <div>
+    const showResults = (this.state.name === '') ? 'as-searchResults' : '';
+
+    return (<div>
       <form onSubmit={this.handleSubmit}>
         <label htmlFor="athleteSearchBox">
           Search For Athlete
@@ -46,10 +61,16 @@ export default class AthleteSearch extends React.Component {
           key="athleteSearchBox"
           value={this.state.athleteId}
           onChange={this.handleChange}
-          className="athleteSearchBox" />
+          className="as-athleteSearchBox"
+        />
         <br />
         <button type="submit">Search</button>
       </form>
-    </div>;
+      <div className={showResults}>
+        <span>Name: {this.state.name}</span>
+        <br />
+        <span><img src={this.state.profile} alt="athlete profile" /></span>
+      </div>
+    </div>);
   };
 }

@@ -1,15 +1,7 @@
 {
   "parser": "babel-eslint",
-  "env": {
-    "browser": true,
-    "node": true,
-    "mocha": true
-  },
-  "plugins": [
-    "react"
-  ],
-  "rules": {
-    "react/jsx-quotes": 0,
-    "jsx-quotes": [2, "prefer-double"]
-  }
+    "rules": {
+      "strict": 0
+    },
+  "extends": "airbnb"
 }
