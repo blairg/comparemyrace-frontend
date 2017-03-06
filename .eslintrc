@@ -4,5 +4,9 @@
   "globals": {
     "document": true,
     "window": true
+  },
+  "env": {
+    "node": true,
+    "mocha": true
   }
 }
