@@ -1,7 +1,7 @@
 import React from 'react';
 import AthleteSearch from './athleteSearch/AthleteSearch';
 
-import './App.scss';
+//import './App.scss';
 
 type Props = {};
 

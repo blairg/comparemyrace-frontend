@@ -3,7 +3,7 @@ import React from 'react';
 
 import type InputEvent from '../../types/InputEvent';
 
-import './AthleteSearch.scss';
+//import './AthleteSearch.scss';
 
 type Props = {};
 
