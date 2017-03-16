@@ -71,5 +71,8 @@
     "redux-devtools": "^3.3.2",
     "webpack": "^1.13.2",
     "webpack-dev-server": "^1.16.1"
+  },
+  "engines": {
+    "node": "7.3.0"
   }
 }
