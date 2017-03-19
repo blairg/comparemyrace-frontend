@@ -7,7 +7,7 @@ machine:
     version: 7.3.0
 dependencies:
   pre:
-    - npm install yarnpkg babel-cli -g;
+    - npm install yarn babel-cli -g;
     - yarn lint;
     - yarn flow;
     - yarn test:coverage;
