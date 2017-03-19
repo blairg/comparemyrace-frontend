@@ -8,6 +8,7 @@ machine:
 dependencies:
   pre:
     - npm install yarn babel-cli eslint -g;
+    - yarn install;
     - yarn lint;
     - yarn flow;
     - yarn test:coverage;
