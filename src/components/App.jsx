@@ -1,5 +1,5 @@
 import React from 'react';
-import AthleteSearch from './athleteSearch/AthleteSearch';
+import AthleteSearch from './athlete/AthleteSearch';
 
 import './App.scss';
 
