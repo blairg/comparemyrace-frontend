@@ -1,5 +1,5 @@
 import React from 'react';
-import AthleteSearch from './athlete/AthleteSearch';
+import Search from './athlete/Search';
 
 import './App.scss';
 
@@ -10,6 +10,6 @@ export default class App extends React.Component {
   props: Props;
 
   render() {
-    return <AthleteSearch />;
+    return <Search />;
   }
 }
