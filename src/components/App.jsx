@@ -3,13 +3,8 @@ import Search from './athlete/Search';
 
 import './App.scss';
 
-type Props = {};
+const App = () => (
+  <Search />
+);
 
-export default class App extends React.Component {
-  state: {};
-  props: Props;
-
-  render() {
-    return <Search />;
-  }
-}
+export default App;

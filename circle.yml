@@ -11,4 +11,9 @@ dependencies:
     - yarn install;
     - yarn lint;
     - yarn flow;
+test:
+  override:
     - yarn test:coverage;
+  post:
+    - mkdir -p $CIRCLE_ARTIFACTS/istanbul
+    - mv coverage $CIRCLE_ARTIFACTS/coverage-report

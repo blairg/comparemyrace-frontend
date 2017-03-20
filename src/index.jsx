@@ -1,11 +1,13 @@
 import React from 'react';
-import { render } from 'react-dom';
+import ReactDOM from 'react-dom';
+import { Router, Route, browserHistory } from 'react-router';
 import App from './components/App';
 
-function main() {
-  const app = document.createElement('div');
-  document.body.appendChild(app);
-  render(<App />, app);
-}
+const app = document.createElement('div');
+document.body.appendChild(app);
 
-main();
+ReactDOM.render((
+  <Router history={browserHistory}>
+    <Route path="/" component={App} />
+  </Router>
+), app);

@@ -1,5 +1,6 @@
 // @flow
 import React from 'react';
+import Result from './Result';
 
 import type InputEvent from '../../types/InputEvent';
 
@@ -7,7 +8,7 @@ import './Search.scss';
 
 type Props = {};
 
-export default class AthleteSearch extends React.Component {
+export default class Search extends React.Component {
   constructor(props: Props) {
     super(props);
     this.state = { athleteId: '', name: '', profile: '' };
@@ -66,11 +67,12 @@ export default class AthleteSearch extends React.Component {
         <br />
         <button type="submit">Search</button>
       </form>
-      <div className={showResults}>
-        <span>Name: {this.state.name}</span>
-        <br />
-        <span><img src={this.state.profile} alt="athlete profile" /></span>
-      </div>
-    </div>);
+      <Result
+        showResults={showResults}
+        name={this.state.name}
+        profile={this.state.profile}
+      />
+    </div>
+    );
   };
 }
