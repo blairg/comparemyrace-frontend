@@ -8,6 +8,8 @@ var ROOT_PATH = path.resolve(__dirname);
 var PRODUCTION = process.env.NODE_ENV === 'production';
 var OUTPUT_PATH = (PRODUCTION) ? path.resolve(ROOT_PATH, 'app/dist') : path.resolve(ROOT_PATH, 'app/build');
 
+console.log(OUTPUT_PATH);
+
 var devFlagPlugin = new webpack.DefinePlugin({
   __DEV__: JSON.stringify(JSON.parse(process.env.DEBUG || 'false'))
 });
@@ -36,6 +38,10 @@ module.exports = {
         },
         {
           test: /\.(ttf|eot|svg|woff|woff2)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+          loader: 'file-loader'
+        },
+        {
+          test: /\.(jpe?g|png|gif|svg)$/i,
           loader: 'file-loader'
         }
       ]

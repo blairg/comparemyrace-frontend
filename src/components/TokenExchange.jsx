@@ -12,6 +12,8 @@ class TokenExchange extends React.Component {
   constructor(props: Props) {
     super(props);
 
+    console.log(props.location.query.code);
+
     this.state = {
       token: props.location.query.code,
     };
