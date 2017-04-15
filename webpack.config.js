@@ -5,10 +5,17 @@ var path = require('path');
 var HtmlwebpackPlugin = require('html-webpack-plugin');
 
 var ROOT_PATH = path.resolve(__dirname);
-var OUTPUT_PATH = (process.env.NODE_ENV === 'production') ? path.resolve(ROOT_PATH, 'app/dist') : path.resolve(ROOT_PATH, 'app/build');
+var PRODUCTION = process.env.NODE_ENV === 'production';
+var OUTPUT_PATH = (PRODUCTION) ? path.resolve(ROOT_PATH, 'app/dist') : path.resolve(ROOT_PATH, 'app/build');
+
+console.log(OUTPUT_PATH);
+
+var devFlagPlugin = new webpack.DefinePlugin({
+  __DEV__: JSON.stringify(JSON.parse(process.env.DEBUG || 'false'))
+});
 
 module.exports = {
-    devtool: process.env.NODE_ENV === 'production' ? '' : 'source-map',
+    devtool: (PRODUCTION) ? '' : 'source-map',
     entry: [
         path.resolve(ROOT_PATH, 'src/index'),
     ],
@@ -16,7 +23,7 @@ module.exports = {
         preLoaders: [
             {
                 test: /\.jsx?$/,
-                loaders: (process.env.NODE_ENV === 'production') ? [] : ['eslint'],
+                loaders: (PRODUCTION) ? [] : ['eslint'],
                 include: path.resolve(ROOT_PATH, 'app')
             }
         ],
@@ -31,6 +38,10 @@ module.exports = {
         },
         {
           test: /\.(ttf|eot|svg|woff|woff2)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+          loader: 'file-loader'
+        },
+        {
+          test: /\.(jpe?g|png|gif|svg)$/i,
           loader: 'file-loader'
         }
       ]
@@ -54,6 +65,7 @@ module.exports = {
         new webpack.HotModuleReplacementPlugin(),
         new HtmlwebpackPlugin({
             title: 'Compare My Race'
-        })
+        }),
+        devFlagPlugin
     ]
 };

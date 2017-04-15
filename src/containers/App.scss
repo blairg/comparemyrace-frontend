@@ -1,0 +1,61 @@
+body{
+  background: url('../../public/images/homepage_bg.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+.login-container{
+  width: 25%;
+  height: 60%;
+  min-height: 300px;
+  left: 38%;
+  margin-top: 10%;
+  position: absolute;
+  background: rgba(0,0,0,0.75);
+
+  .login-heading{
+    background: rgba(0,0,0,0.85);
+    min-height: 50px;
+    font-weight: 300;
+    font-size: 30px;
+    text-align: center;
+    color: #eee;
+    text-shadow: none;
+    line-height: 1.2em;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .login-strava-logo{
+    background: url('../../public/images/Strava_Logo.jpg') no-repeat;
+    position: relative;
+    min-height: 100px;
+    min-width: 100px;
+    margin-left: 38%;
+    margin-top: 24%;
+    background-size: contain;
+  }
+
+  button{
+    text-align: center;
+    -webkit-appearance: none;
+    color: #fff;
+    width: 90%;
+    left: 5%;
+    right: 5%;
+    margin-top: 30%;
+    line-height: inherit;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    white-space: nowrap;
+    box-sizing: border-box;
+    font-size: 14px;
+    padding: 9px 10px;
+    background-color: rgb(227, 68, 2);
+  }
+}
