@@ -2,6 +2,7 @@ import React from 'react';
 import { render } from 'react-dom';
 import { Router, Route, browserHistory } from 'react-router';
 import { Provider } from 'react-redux';
+import * as localStorageTypes from './constants/LocalStorageTypes';
 import App from './containers/App';
 import configureStore from './store/configureStore';
 import TokenExchange from './components/TokenExchange';
@@ -15,10 +16,20 @@ const store = configureStore();
 const app = document.createElement('div');
 document.body.appendChild(app);
 
+const loginFunction = () => {
+  if (localStorage.getItem(localStorageTypes.TOKEN)) {
+    console.log('found in local storage');
+    window.location.href = envVars.stravaUrl;
+  }
+
+  console.log('clicked my button - ' + envVars.stravaUrl);
+  window.location.href = envVars.stravaUrl;
+};
+
 render(
   <Provider store={store}>
     <Router history={browserHistory}>
-      <Route path="/" component={() => <App stravaUrl={envVars.stravaUrl} />} />
+      <Route path="/" component={() => <App stravaLogin={loginFunction} />} />
       <Route path="/token_exchange" component={TokenExchange} />
     </Router>
   </Provider>,

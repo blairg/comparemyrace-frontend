@@ -2,6 +2,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { storeToken } from '../actions';
+import * as localStorageTypes from '../constants/LocalStorageTypes';
 
 type Props = {
   location: Object,
@@ -12,24 +13,48 @@ class TokenExchange extends React.Component {
   constructor(props: Props) {
     super(props);
 
-    console.log(props.location.query.code);
+    const query = props.location.query;
 
-    this.state = {
-      token: props.location.query.code,
-    };
+    if (this.checkAccessCode(query)) {
+      this.state = {
+        token: props.location.query.code,
+      };
 
-    this.props.storeToken(this.state.token);
+      localStorage.setItem(localStorageTypes.TOKEN, this.state.token);
+
+      console.log('added to local storage');
+
+      this.props.storeToken(this.state.token);
+    } else {
+      this.state = {
+        token: 'Not found!',
+      };
+
+      this.props.storeToken('Not found!');
+    }
   }
 
   state: {
     token: string
   };
 
+  checkAccessCode = (query: Object) => {
+    if (!query.code) {
+      return false;
+    }
+
+    if (query.code !== '') {
+      return true;
+    }
+
+    return false;
+  };
+
   render = () => (
     <div>
       access token: {this.state.token}
     </div>
-        )
+  );
 }
 
 const mapStateToProps = state => ({
