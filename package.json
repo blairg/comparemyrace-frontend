@@ -7,7 +7,7 @@
   "author": "Blair Garrett",
   "license": "MIT",
   "scripts": {
-    "webserver": "node api/index.js",
+    "webserver": "node server/index.js",
     "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js 'test/**/*.@(js|jsx)' --require node_modules/ignore-styles --recursive",
     "test:coverage": "babel-node node_modules/.bin/babel-istanbul cover _mocha -- --require ./test/test_helper.js 'test/**/*.@(js|jsx)' --require node_modules/ignore-styles --recursive",
     "test:watch": "mocha -w --compilers js:babel-core/register --require ./test/test_helper.js 'test/**/*.@(js|jsx)'",
@@ -37,6 +37,8 @@
     "react-router": "^3.0.0",
     "redux": "^3.6.0",
     "redux-thunk": "^2.1.0",
+    "request": "^2.81.0",
+    "request-promise": "^4.2.0",
     "sass-loader": "^4.1.1",
     "style-loader": "^0.13.1"
   },

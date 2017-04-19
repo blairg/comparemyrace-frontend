@@ -16,8 +16,32 @@ class TokenExchange extends React.Component {
     const query = props.location.query;
 
     if (this.checkAccessCode(query)) {
+      let accessToken = '';
+
+      // @todo: abstract this and Bluebird promisefy
+      fetch('http://localhost:3000/token/' + props.location.query.code)
+      .then(
+        function(response) {
+          if (response.status !== 200) {
+            console.log('Looks like there was a problem. Status Code: ' +
+              response.status);
+            return;
+          }
+
+          response.json().then(function(data) {
+            accessToken = data.access_token;
+            console.log(accessToken);
+          });
+        }
+      )
+      .catch(function(err) {
+        console.log('Fetch Error :-S', err);
+      });
+
+      console.log(accessToken);
+
       this.state = {
-        token: props.location.query.code,
+        token: accessToken,
       };
 
       localStorage.setItem(localStorageTypes.TOKEN, this.state.token);
