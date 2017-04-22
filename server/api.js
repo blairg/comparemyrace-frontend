@@ -25,6 +25,7 @@ api.get('/token/:code',
 
     await fetch(options)
       .then(function (parsedBody) {
+          console.log('performed request: ' + envVars.token_url);
           ctx.body = parsedBody;
           ctx.status = 200;
       })

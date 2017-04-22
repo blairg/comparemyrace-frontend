@@ -19,11 +19,11 @@ document.body.appendChild(app);
 const loginFunction = () => {
   if (localStorage.getItem(localStorageTypes.TOKEN)) {
     console.log('found in local storage');
-    window.location.href = envVars.stravaUrl;
+    window.location.href = envVars.accessCodeUrl;
   }
 
-  console.log('clicked my button - ' + envVars.stravaUrl);
-  window.location.href = envVars.stravaUrl;
+  console.log('clicked my button - ' + envVars.accessCodeUrl);
+  window.location.href = envVars.accessCodeUrl;
 };
 
 render(

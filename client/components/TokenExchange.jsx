@@ -1,8 +1,13 @@
 // @flow
 import React from 'react';
+import axios from 'axios';
 import { connect } from 'react-redux';
 import { storeToken } from '../actions';
 import * as localStorageTypes from '../constants/LocalStorageTypes';
+import PersonalDetails from '../containers/athlete/PersonalDetails';
+import Config from '../../config';
+
+const envVars = Config.get(process.env.ENV);
 
 type Props = {
   location: Object,
@@ -16,50 +21,31 @@ class TokenExchange extends React.Component {
     const query = props.location.query;
 
     if (this.checkAccessCode(query)) {
-      let accessToken = '';
-
-      // @todo: abstract this and Bluebird promisefy
-      fetch('http://localhost:3000/token/' + props.location.query.code)
-      .then(
-        function(response) {
-          if (response.status !== 200) {
-            console.log('Looks like there was a problem. Status Code: ' +
-              response.status);
-            return;
-          }
-
-          response.json().then(function(data) {
-            accessToken = data.access_token;
-            console.log(accessToken);
-          });
-        }
-      )
-      .catch(function(err) {
-        console.log('Fetch Error :-S', err);
-      });
-
-      console.log(accessToken);
-
       this.state = {
-        token: accessToken,
+        accessCode: query.code,
+        accessToken: '',
+        athleteDetails: {}
       };
-
-      localStorage.setItem(localStorageTypes.TOKEN, this.state.token);
-
-      console.log('added to local storage');
-
-      this.props.storeToken(this.state.token);
-    } else {
-      this.state = {
-        token: 'Not found!',
-      };
-
-      this.props.storeToken('Not found!');
     }
   }
 
   state: {
-    token: string
+    accessCode: string,
+    accessToken: string,
+    athleteDetails: Object,
+  };
+
+  componentDidMount = () => {
+    // @todo: Move to config
+    axios.get(`${envVars.accessTokenUrl}${this.state.accessCode}`)
+      .then(result => {
+        this.setState({ accessToken: result.data.access_token,
+          athleteDetails: result.data.athlete });
+        // @todo: Persist AthleteDetails in Redux store??
+        this.props.storeToken(result.data.access_token);
+      }).catch(error => {
+        console.log(error);
+      });
   };
 
   checkAccessCode = (query: Object) => {
@@ -76,7 +62,7 @@ class TokenExchange extends React.Component {
 
   render = () => (
     <div>
-      access token: {this.state.token}
+      <PersonalDetails athleteDetails={this.state.athleteDetails} />
     </div>
   );
 }

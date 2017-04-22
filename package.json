@@ -8,9 +8,9 @@
   "license": "MIT",
   "scripts": {
     "webserver": "node server/index.js",
-    "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js 'test/**/*.@(js|jsx)' --require node_modules/ignore-styles --recursive",
-    "test:coverage": "babel-node node_modules/.bin/babel-istanbul cover _mocha -- --require ./test/test_helper.js 'test/**/*.@(js|jsx)' --require node_modules/ignore-styles --recursive",
-    "test:watch": "mocha -w --compilers js:babel-core/register --require ./test/test_helper.js 'test/**/*.@(js|jsx)'",
+    "test": "mocha --compilers js:babel-core/register --require ./test/client/test_helper.js 'test/**/**/*.@(js|jsx)' --require node_modules/ignore-styles --recursive",
+    "test:coverage": "babel-node node_modules/.bin/babel-istanbul cover _mocha -- --require ./test/client/test_helper.js 'test/**/**/*.@(js|jsx)' --require node_modules/ignore-styles --recursive",
+    "test:watch": "mocha -w --compilers js:babel-core/register --require ./test/client/test_helper.js 'test/**/**/*.@(js|jsx)'",
     "build": "node_modules/.bin/webpack",
     "dev": "DEBUG=true node_modules/.bin/webpack-dev-server",
     "lint": "eslint . --ignore-path .gitignore --ext .js --ext .jsx",
@@ -19,6 +19,7 @@
     "flow": "flow; test $? -eq 0 -o $? -eq 2"
   },
   "dependencies": {
+    "axios": "^0.16.1",
     "css-loader": "^0.26.1",
     "empty": "^0.10.1",
     "immutable": "^3.8.1",
