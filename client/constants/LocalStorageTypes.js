@@ -1,2 +1,2 @@
 export const TOKEN = 'TOKEN';
-export { TOKEN as default };
+export const ATHLETE = 'ATHLETE';
