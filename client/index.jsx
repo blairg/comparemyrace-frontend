@@ -17,9 +17,10 @@ const app = document.createElement('div');
 document.body.appendChild(app);
 
 const loginFunction = () => {
-  if (localStorage.getItem(localStorageTypes.TOKEN)) {
-    console.log('found in local storage');
-    window.location.href = envVars.accessCodeUrl;
+  if (sessionStorage.getItem(localStorageTypes.TOKEN)) {
+    //console.log('found in local storage');
+    //window.location.href = envVars.accessCodeUrl;
+    browserHistory.push('/token_exchange');
   }
 
   console.log('clicked my button - ' + envVars.accessCodeUrl);

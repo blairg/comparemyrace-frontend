@@ -1,0 +1,19 @@
+version: '3'
+services:
+  server:
+    build: .
+    container_name: comparemyrace-frontend
+    ports:
+      - '3000:3000'
+    volumes:
+      - '.:/usr/src/app'
+    depends_on:
+      - redis
+    env_file:
+      - .env-dev
+  redis:
+    image: redis
+    container_name: comparemyrace-frontend-redis
+    ports:
+      - 6380:6379
+    command: redis-server --requirepass 65d77368-eb5a-48aa-99a2-729ab2f081d0
