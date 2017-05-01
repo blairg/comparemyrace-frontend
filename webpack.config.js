@@ -17,7 +17,7 @@ var devFlagPlugin = new webpack.DefinePlugin({
 module.exports = {
     devtool: (PRODUCTION) ? '' : 'source-map',
     entry: [
-        path.resolve(ROOT_PATH, 'src/index'),
+        path.resolve(ROOT_PATH, 'client/index'),
     ],
     module: {
         preLoaders: [
