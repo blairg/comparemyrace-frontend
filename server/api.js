@@ -13,24 +13,17 @@ api.get('/token/:code',
       code
     } = ctx.params;
 
-    console.log(`code: ${code}`);
-
     const getPromise = redisGet(code);
     let redisValue;
 
     getPromise.then((result) => {
-      console.log('in getter');
-      console.log(result);
-      redisValue = result;
+      redisValue = result;  
     });
 
     if (redisValue != null) {
-      console.log('found key');
       ctx.body = JSON.parse(redisValue);
       ctx.status = 304;
     } else {
-      console.log('not found key');
-
       const options = {
         method: 'POST',
         uri: envVars.token_url,

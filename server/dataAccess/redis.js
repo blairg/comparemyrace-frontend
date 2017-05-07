@@ -22,11 +22,9 @@ bluebird.promisifyAll(redis.RedisClient.prototype);
 bluebird.promisifyAll(redis.Multi.prototype);
 
 export const redisGet = key => client.getAsync(key).then((res) => {
-  console.log('Key in get: ' + res); // => 'bar'
   return res;
 });
 
 export const redisSet = (key, value) => client.setAsync(key, value, 'EX', envVars.redis.expiry).then((res) => {
   console.log('setting key: ' + key);
-  console.log(res); // => 'bar'
 });

@@ -2,9 +2,9 @@
 .gitignore
 README.md
 docker-compose.yml
-node_modules
+#node_modules
 coverage
 test
-client
 .idea
 circle.yml
+Dockerfile-*

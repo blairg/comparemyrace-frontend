@@ -1,14 +1,29 @@
 version: '3'
 services:
   server:
-    build: .
-    container_name: comparemyrace-frontend
+    build:
+      context: .
+      dockerfile: Dockerfile-server
+    container_name: comparemyrace-frontend-server
     ports:
       - '3000:3000'
     volumes:
       - '.:/usr/src/app'
     depends_on:
       - redis
+    env_file:
+      - .env-dev
+  client:
+    build:
+      context: .
+      dockerfile: Dockerfile-client
+    container_name: comparemyrace-frontend-client
+    ports:
+      - '8080:8080'
+    volumes:
+      - '.:/usr/src/app'
+    depends_on:
+      - server
     env_file:
       - .env-dev
   redis:
