@@ -1,0 +1,34 @@
+version: '3'
+services:
+  server:
+    build:
+      context: .
+      dockerfile: Dockerfile-server
+    container_name: comparemyrace-frontend-server
+    ports:
+      - '3000:3000'
+    volumes:
+      - '.:/usr/src/app'
+    depends_on:
+      - redis
+    env_file:
+      - .env-dev
+  client:
+    build:
+      context: .
+      dockerfile: Dockerfile-client
+    container_name: comparemyrace-frontend-client
+    ports:
+      - '8080:8080'
+    volumes:
+      - '.:/usr/src/app'
+    depends_on:
+      - server
+    env_file:
+      - .env-dev
+  redis:
+    image: redis
+    container_name: comparemyrace-frontend-redis
+    ports:
+      - 6380:6379
+    command: redis-server --requirepass 65d77368-eb5a-48aa-99a2-729ab2f081d0

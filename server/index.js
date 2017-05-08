@@ -12,3 +12,4 @@ if (env === 'development') {
 
 const app = require(src).default;
 app.listen(port);
+console.log(`listening on port: ${port}`);

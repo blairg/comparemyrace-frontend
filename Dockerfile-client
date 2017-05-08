@@ -1,0 +1,14 @@
+FROM node:7.10.0-alpine
+
+WORKDIR /usr/src/app
+
+COPY package.json yarn.lock /usr/src/app/
+
+RUN npm config set registry http://registry.npmjs.org/ && \
+    yarn upgrade && npm install
+
+COPY . /usr/src/app
+
+EXPOSE 8080
+
+CMD [ "yarn", "dev" ]
