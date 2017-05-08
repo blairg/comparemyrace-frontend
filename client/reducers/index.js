@@ -6,7 +6,8 @@ import * as actionTypes from '../constants/ActionTypes';
 export function storeAccessCode(state: Object = { accessCode: 'not set' }, action: Object) {
   switch (action.type) {
     case actionTypes.STORE_ACCESS_CODE:
-    console.log('storing');
+      // eslint-disable-next-line
+      console.log('storing');
       return { ...state,
         accessCode: action.accessCode,
       };

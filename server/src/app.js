@@ -1,14 +1,11 @@
 import Koa from 'koa';
-import api from '../api';
-import config from '../config';
 import bodyParser from 'koa-bodyparser';
 import cors from 'kcors';
+import api from '../api';
 
 const app = new Koa()
   .use(cors())
   .use(async (ctx, next) => {
-    //ctx.state.collections = config.collections;
-    //ctx.state.authorizationHeader = 'Key ' + config.key;
     await next();
   })
   .use(bodyParser())

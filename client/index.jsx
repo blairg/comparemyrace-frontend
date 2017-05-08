@@ -18,12 +18,13 @@ document.body.appendChild(app);
 
 const loginFunction = () => {
   if (sessionStorage.getItem(localStorageTypes.TOKEN)) {
-    //console.log('found in local storage');
-    //window.location.href = envVars.accessCodeUrl;
+    // console.log('found in local storage');
+    // window.location.href = envVars.accessCodeUrl;
     browserHistory.push('/token_exchange');
   }
 
-  console.log('clicked my button - ' + envVars.accessCodeUrl);
+  // eslint-disable-next-line
+  console.log(`clicked my button - ${envVars.accessCodeUrl}`);
   window.location.href = envVars.accessCodeUrl;
 };
 

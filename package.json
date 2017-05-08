@@ -20,6 +20,7 @@
   },
   "dependencies": {
     "axios": "^0.16.1",
+    "babel-polyfill": "^6.23.0",
     "bluebird": "^3.5.0",
     "css-loader": "^0.26.1",
     "empty": "^0.10.1",
@@ -31,6 +32,7 @@
     "koa-cors": "^0.0.16",
     "koa-route": "^3.2.0",
     "koa-router": "^7.1.1",
+    "promise": "^7.1.1",
     "react": "^15.3.2",
     "react-dom": "^15.4.1",
     "react-redux": "^5.0.3",

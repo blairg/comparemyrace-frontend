@@ -4,7 +4,8 @@
   "globals": {
     "document": true,
     "window": true,
-    "sessionStorage": true
+    "sessionStorage": true,
+    "localStorage": true
   },
   "env": {
     "node": true,

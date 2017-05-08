@@ -1,4 +1,5 @@
 // @flow
+
 import React from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
@@ -15,8 +16,6 @@ type Props = {
   saveAccessCode: Function,
   saveToken: Function,
   saveAthlete: Function,
-  storeAccessCode: string,
-  storeToken: string,
   storeAthlete: Object,
 }
 
@@ -54,11 +53,16 @@ class TokenExchange extends React.Component {
           this.props.saveToken(accessToken);
           this.props.saveAthlete(athlete);
         }).catch((error) => {
+          // eslint-disable-next-line
           console.log(error);
         });
     } else {
       this.props.saveToken(this.getSessionStorageValue(localStorageTypes.TOKEN));
-      this.props.saveAthlete(JSON.parse(this.getSessionStorageValue(localStorageTypes.ATHLETE)));
+      const athleteValue = this.getSessionStorageValue(localStorageTypes.ATHLETE);
+
+      if (athleteValue != null) {
+        this.props.saveAthlete(JSON.parse(athleteValue));
+      }
     }
   };
 
@@ -67,7 +71,12 @@ class TokenExchange extends React.Component {
 
   setInitialState = () => {
     this.props.saveToken(this.getSessionStorageValue(localStorageTypes.TOKEN));
-    this.props.saveAthlete(JSON.parse(this.getSessionStorageValue(localStorageTypes.ATHLETE)));
+
+    const athleteValue = this.getSessionStorageValue(localStorageTypes.ATHLETE);
+
+    if (athleteValue != null) {
+      this.props.saveAthlete(JSON.parse(athleteValue));
+    }
   };
 
   checkAccessCode = (query: Object) => {
@@ -100,21 +109,18 @@ class TokenExchange extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  const { storeAccessCode, storeToken, storeAthlete } = state;
-  return { storeAccessCode, storeToken, storeAthlete };
-};
+const mapStateToProps = state => state;
 
 const mapDispatchToProps = dispatch => ({
-  saveAccessCode: (accessCode) => {
+  saveAccessCode: (accessCode: string) => {
     dispatch(storeAccessCode(accessCode));
   },
-  saveToken: (token) => {
+  saveToken: (token: string) => {
     dispatch(storeToken(token));
   },
-  saveAthlete: (athlete) => {
+  saveAthlete: (athlete: Object) => {
     dispatch(storeAthlete(athlete));
-  }
+  },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(TokenExchange);

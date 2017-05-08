@@ -7,7 +7,7 @@ export default class Config {
       port: 6379,
       password: '65d77368-eb5a-48aa-99a2-729ab2f081d0',
       expiry: 60,
-    }
+    },
   };
 
   static stage = {};

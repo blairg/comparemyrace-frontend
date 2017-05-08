@@ -5,7 +5,7 @@ import Config from './../config';
 
 const envVars = Config.get(process.env.ENV);
 
-let client = redis.createClient(envVars.redis.port, envVars.redis.host, {
+const client = redis.createClient(envVars.redis.port, envVars.redis.host, {
   retryStrategy: function retry() {
     return 2000;
   },
@@ -21,10 +21,9 @@ client.on('error', (err) => {
 bluebird.promisifyAll(redis.RedisClient.prototype);
 bluebird.promisifyAll(redis.Multi.prototype);
 
-export const redisGet = key => client.getAsync(key).then((res) => {
-  return res;
-});
+export const redisGet = key => client.getAsync(key).then(res => res);
 
-export const redisSet = (key, value) => client.setAsync(key, value, 'EX', envVars.redis.expiry).then((res) => {
-  console.log('setting key: ' + key);
+export const redisSet = (key, value) => client.setAsync(key, value, 'EX', envVars.redis.expiry).then(() => {
+  // eslint-disable-next-line
+  console.log(`setting key: ${key}`);
 });
