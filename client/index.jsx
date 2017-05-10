@@ -8,6 +8,7 @@ import App from './containers/App';
 import configureStore from './store/configureStore';
 import TokenExchange from './components/TokenExchange';
 import Config from '../config';
+import fetchToken from './sagas';
 
 const envVars = Config.get(process.env.ENV);
 
