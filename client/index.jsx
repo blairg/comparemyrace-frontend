@@ -2,17 +2,19 @@ import React from 'react';
 import { render } from 'react-dom';
 import { Router, Route, browserHistory } from 'react-router';
 import { Provider } from 'react-redux';
+//import createSagaMiddleware from 'redux-saga';
 import './styles/react-spinner.scss';
 import * as localStorageTypes from './constants/LocalStorageTypes';
 import App from './containers/App';
 import configureStore from './store/configureStore';
 import TokenExchange from './components/TokenExchange';
 import Config from '../config';
-import fetchToken from './sagas';
+import rootSaga from './sagas';
 
 const envVars = Config.get(process.env.ENV);
 
 const store = configureStore();
+store.runSaga(rootSaga);
 
 const app = document.createElement('div');
 document.body.appendChild(app);

@@ -486,14 +486,13 @@ babel-istanbul@^0.12.2:
     which "1.2.x"
     wordwrap "1.0.x"
 
-babel-loader@^6.2.7:
-  version "6.4.1"
-  resolved "https://registry.yarnpkg.com/babel-loader/-/babel-loader-6.4.1.tgz#0b34112d5b0748a8dcdbf51acf6f9bd42d50b8ca"
+babel-loader@^7.0.0:
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/babel-loader/-/babel-loader-7.0.0.tgz#2e43a66bee1fff4470533d0402c8a4532fafbaf7"
   dependencies:
     find-cache-dir "^0.1.1"
-    loader-utils "^0.2.16"
+    loader-utils "^1.0.2"
     mkdirp "^0.5.1"
-    object-assign "^4.0.1"
 
 babel-messages@^6.23.0:
   version "6.23.0"
@@ -874,7 +873,7 @@ babel-polyfill@^6.23.0:
     core-js "^2.4.0"
     regenerator-runtime "^0.10.0"
 
-babel-preset-es2015@^6.18.0:
+babel-preset-es2015@^6.24.1:
   version "6.24.1"
   resolved "https://registry.yarnpkg.com/babel-preset-es2015/-/babel-preset-es2015-6.24.1.tgz#d44050d6bc2c9feea702aaf38d727a0210538939"
   dependencies:
@@ -920,7 +919,7 @@ babel-preset-react@^6.16.0:
     babel-plugin-transform-react-jsx-source "^6.22.0"
     babel-preset-flow "^6.23.0"
 
-babel-preset-stage-0@^6.16.0:
+babel-preset-stage-0@^6.24.1:
   version "6.24.1"
   resolved "https://registry.yarnpkg.com/babel-preset-stage-0/-/babel-preset-stage-0-6.24.1.tgz#5642d15042f91384d7e5af8bc88b1db95b039e6a"
   dependencies:
@@ -954,6 +953,10 @@ babel-preset-stage-3@^6.24.1:
     babel-plugin-transform-async-to-generator "^6.24.1"
     babel-plugin-transform-exponentiation-operator "^6.24.1"
     babel-plugin-transform-object-rest-spread "^6.22.0"
+
+babel-regenerator-runtime@^6.5.0:
+  version "6.5.0"
+  resolved "https://registry.yarnpkg.com/babel-regenerator-runtime/-/babel-regenerator-runtime-6.5.0.tgz#0e41cd1c9f80442466f015c749fff8ba98f8e110"
 
 babel-register@^6.23.0, babel-register@^6.24.1:
   version "6.24.1"
@@ -5525,9 +5528,9 @@ reduce-function-call@^1.0.1:
   dependencies:
     balanced-match "^0.4.2"
 
-redux-thunk@^2.1.0:
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/redux-thunk/-/redux-thunk-2.2.0.tgz#e615a16e16b47a19a515766133d1e3e99b7852e5"
+redux-saga@^0.15.3:
+  version "0.15.3"
+  resolved "https://registry.yarnpkg.com/redux-saga/-/redux-saga-0.15.3.tgz#be2b86b4ad46bf0d84fcfcb0ca96cfc33db91acb"
 
 redux@^3.6.0:
   version "3.6.0"
