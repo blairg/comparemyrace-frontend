@@ -1,15 +1,11 @@
 // @flow
 
 import React from 'react';
-import axios from 'axios';
 import { connect } from 'react-redux';
 import Spinner from 'react-spinner';
 import { storeAccessCode, storeToken, storeAthlete } from '../actions';
 import * as localStorageTypes from '../constants/LocalStorageTypes';
 import PersonalDetails from '../containers/athlete/PersonalDetails';
-import Config from '../../config';
-
-const envVars = Config.get(process.env.ENV);
 
 type Props = {
   location: Object,
@@ -39,31 +35,6 @@ class TokenExchange extends React.Component {
     accessCode: string,
     accessToken: string,
     athlete: Object,
-  };
-
-  componentDidMount = () => {
-    if (!this.getSessionStorageValue(localStorageTypes.TOKEN)) {
-      axios.get(`${envVars.accessTokenUrl}${this.accessCode}`)
-        .then((result) => {
-          const accessToken = result.data.access_token;
-          const athlete = result.data.athlete;
-
-          sessionStorage.setItem(localStorageTypes.TOKEN, accessToken);
-          sessionStorage.setItem(localStorageTypes.ATHLETE, JSON.stringify(athlete));
-          this.props.saveToken(accessToken);
-          this.props.saveAthlete(athlete);
-        }).catch((error) => {
-          // eslint-disable-next-line
-          console.log(error);
-        });
-    } else {
-      this.props.saveToken(this.getSessionStorageValue(localStorageTypes.TOKEN));
-      const athleteValue = this.getSessionStorageValue(localStorageTypes.ATHLETE);
-
-      if (athleteValue != null) {
-        this.props.saveAthlete(JSON.parse(athleteValue));
-      }
-    }
   };
 
   getSessionStorageValue = (key: string) => sessionStorage.getItem(key);
