@@ -2,7 +2,6 @@ import React from 'react';
 import { render } from 'react-dom';
 import { Router, Route, browserHistory } from 'react-router';
 import { Provider } from 'react-redux';
-//import createSagaMiddleware from 'redux-saga';
 import './styles/react-spinner.scss';
 import * as localStorageTypes from './constants/LocalStorageTypes';
 import App from './containers/App';

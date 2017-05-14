@@ -1,6 +1,13 @@
 {
   "parser": "babel-eslint",
   "extends": "airbnb",
+  "plugins": [
+    "flowtype"
+  ],
+  "rules": {
+    "flowtype/define-flow-type": 1,
+    "flowtype/use-flow-type": 1
+  },
   "globals": {
     "document": true,
     "window": true,
